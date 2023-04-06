@@ -1,0 +1,15 @@
+.loader {
+    border: 4px solid #f3f3f3; /* set the border properties */
+    border-top: 4px solid #3498db; /* set the top border color to blue */
+    border-radius: 50%; /* make the loader circular */
+    width: 20px; /* set the width and height of the loader */
+    height: 20px;
+    animation: spin 2s linear infinite; /* add a CSS animation to spin the loader */
+    margin: auto; /* center the loader within its container */
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); } /* set the starting rotation angle */
+    100% { transform: rotate(360deg); } /* set the ending rotation angle */
+  }
+  

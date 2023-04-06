@@ -1,0 +1,271 @@
+    <Box flex={4} p={2} sx={{marginTop:'-100px'}}>
+
+            {followingposts && followingposts?.map((user, index) => {
+
+
+                {/* {console.log(id, "..........._id")} */ }
+                console.log(user, "HERE IS YOUR USER");
+
+                return <div key={index}>
+
+                    {/* {user && user.following.map((userfollowing, index) => { */}
+
+                    {/* console.log(userfollowing, "HERE IS YOUR USER FOLLOWING"); */}
+                    {/* return <div key={index}> */}
+
+                    {user && user.followingdetails?.map((post, index) => {
+
+
+                        return <div key={index} >
+                            {user.following.includes(post.userid) &&
+                                // <Card sx={{ margin: 5, border: '1px solid grey', borderRadius: '15px' }}>
+                                <Card sx={{ margin: 5, borderRadius: '15px' }}>
+
+
+                                    {console.log(user.following, "ooooooooooooo")}
+                                    {console.log(post.userid, "useriddddd")}
+
+                                    {/* {(user.following?.includes(post.userid)) ? */}
+                                    {/* <> */}
+                                    {console.log(post, "Correct")}
+
+                                    {usernames && usernames?.map((usernamee, index) => {
+                                        return <div key={index}>
+
+                                            {console.log(usernamee, "Got user full detailsssssss")}
+
+                                            {(post.userid?.includes(usernamee._id)) &&
+                                                <>
+                                                    <CardHeader
+                                                        avatar={
+                                                            <StyledBadge
+                                                                overlap="circular"
+                                                                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                                                                variant="dot"
+                                                            >
+                                                                <Avatar sx={{ bgcolor: "purple" }} alt="Christy" src={`${config.ServerURL}/uploads/${usernamee.ProfileData.profilePicture}`} />
+                                                            </StyledBadge>
+
+                                                        }
+                                                        action={
+                                                            <Button
+                                                                id="basic-button"
+                                                                aria-controls={open ? 'basic-menu' : undefined}
+                                                                aria-haspopup="true"
+                                                                aria-expanded={open ? 'true' : undefined}
+                                                                onClick={handleClick}
+                                                            >
+                                                                <MoreVert />
+                                                            </Button>
+                                                        }
+
+                                                        //{(post.userid?.includes(usernamee._id)) &&
+                                                        // <>
+                                                        title={usernamee.username}
+                                                        // </>
+                                                        // }
+                                                        subheader={post.location}
+                                                    />
+
+                                                    <Menu
+                                                        id="basic-menu"
+                                                        anchorEl={anchorEl}
+                                                        open={open}
+                                                        onClose={handleClose}
+                                                        MenuListProps={{
+                                                            'aria-labelledby': 'basic-button',
+                                                        }}
+                                                    >
+                                                        <MenuItem onClick={handlereports} >
+                                                            {/* Report */}
+                                                            <ListItemText>Report</ListItemText>
+                                                            <ListItemIcon>
+                                                                <ReportProblemIcon style={{ color: 'orange' }} />
+                                                                {/* <ReportProblemIcon style={{ color: 'orange' }} onClick={() => { handlereport(`${post._id}`) }} /> */}
+
+                                                            </ListItemIcon>
+                                                        </MenuItem>
+                                                        <MenuItem onClick={handleClose}>Copy link</MenuItem>
+
+                                                    </Menu>
+
+                                                    <CardMedia
+                                                        component="img"
+                                                        height="300"
+                                                        // image="https://www.wgu.edu/content/dam/web-sites/blog-newsroom/blog/images/national/2018/october/business-agreement.jpg"
+                                                        src={post.postPicture}
+                                                        alt="Post"
+                                                    />
+                                                    <CardContent>
+                                                        <Typography variant="body1" fontWeight={800} color="text.secondary">
+                                                            {post.caption}<br />
+                                                            {/* {post._id} */}
+                                                        </Typography>
+                                                        {/* </CardContent>
+        <CardContent> */}
+                                                        <Typography variant="body2" color="text.secondary">
+                                                            {post.description}
+                                                        </Typography>
+                                                    </CardContent>
+                                                    <CardActions disableSpacing>
+                                                        {/* <IconButton aria-label="add to favorites"  onClick={likedpic} > */}
+                                                        <IconButton aria-label="add to favorites">
+
+                                                            {/* <FavoriteIcon /> */}
+                                                            {/* <Checkbox icon={<FavoriteBorder style={{ color: 'red' }} />}
+                    checkedIcon={<Favorite style={{ color: 'red' }} />}
+                /> */}
+
+                                                            {post.liked?.includes(id) ?
+                                                                <Favorite style={{ color: 'red' }} onClick={() => { handleunlike(`${post._id}`) }} /> :
+                                                                <FavoriteBorder style={{ color: 'red' }} onClick={() => { handlelike(`${post._id}`) }} />
+                                                            }
+
+                                                        </IconButton>
+
+
+                                                        <IconButton>
+
+
+                                                            {post.saved?.includes(id) ?
+                                                                <BookmarkIcon onClick={() => { handleunsave(`${post._id}`) }} style={{ color: '#d13087' }} /> :
+                                                                <BookmarkBorderIcon onClick={() => { handlesave(`${post._id}`) }} style={{ color: '#d13087' }} />
+                                                            }
+
+
+
+                                                        </IconButton>
+                                                        {/* 
+                                                    <IconButton >
+                                                        <ReportProblemIcon style={{ color: 'orange' }} onClick={() => { handlereport(`${post._id}`) }} />
+                                                    </IconButton> */}
+
+                                                        {/* <IconButton style={{ color: 'blue' }} aria-label="share">
+                                                        <ShareIcon />
+                                                    </IconButton> */}
+
+                                                        <ExpandMore
+                                                            expand={expanded}
+                                                            onClick={handleExpandClick}
+                                                            aria-expanded={expanded}
+                                                            aria-label="show more"
+                                                        >
+                                                            <Typography paragraph>Comments</Typography>
+                                                            <ExpandMoreIcon />
+                                                        </ExpandMore>
+                                                    </CardActions>
+
+
+                                                    <Collapse in={expanded} timeout="auto" unmountOnExit>
+
+                                                        {getcomment && getcomment.map((cmt, index) => {
+
+                                                            return <div key={index} >
+                                                                {(cmt.postid.includes(post._id)) &&
+                                                                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                                                        <Typography paragraph>
+                                                                            {cmt.comment}
+                                                                        </Typography>
+                                                                        <Typography paragraph style={{ color: 'grey' }}>
+                                                                            {format(cmt.createdAt)}
+                                                                        </Typography>
+                                                                    </div>
+                                                                }
+                                                            </div>
+
+                                                        })}
+
+                                                    </Collapse>
+
+                                                    <div style={{ display: 'flex', flexDirection: 'row', padding: '10px' }}>
+
+
+                                                        <TextareaAutosize style={{ width: '80%', height: '40px' }} name='comment' onChange={(e) => { setnewcomment(e.target.value) }} value={newcomment} placeholder="Add a comment..." />
+                                                        <button style={{ border: '1px solid green', backgroundColor: 'green', color: 'white', borderRadius: '4px' }} onClick={() => { handlecomment(`${post._id}`) }}>
+                                                            Post
+                                                        </button>
+                                                        {/* <Button >Post</Button> */}
+
+                                                    </div>
+
+
+                                                </>
+                                            }
+
+
+                                        </div>
+                                    })}
+
+                                    {/* </>
+                                    :
+                                    <div style={{ border: 'none', display: 'none' }}></div> 
+
+
+                                 }*/}
+
+
+
+
+                                    <Modal
+                                        open={openreport}
+                                        onClose={handleClosereport}
+                                        aria-labelledby="modal-modal-title"
+                                        aria-describedby="modal-modal-description"
+                                    >
+
+                                        <Box bgcolor={"background.default"} color={"text.primary"} sx={{ marginLeft: '65vh' }} width={500} height={400} p={3} borderRadius={5} >
+                                            <Stack direction="row" justifyContent="space-between" gap={10}>
+                                                <Typography id="modal-modal-title" variant="h6" component="h2" >
+                                                    Submit Your Report
+                                                </Typography>
+                                                <CloseIcon onClick={handleCloseedit} />
+
+                                            </Stack>
+
+                                            {/* 
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                    </Typography> */}
+
+
+                                            <form style={{ marginTop: '-15px' }}>
+
+                                                <div >
+                                                    {/* <input type='text' required name="report" placeholder="Write your issue...." /> */}
+                                                    {/* <input type='text' required name="report" placeholder="Write your issue...." onChange={(e) => { setoldpswd(e.target.value) }} value={oldpswd} /> */}
+
+                                                    <Tooltip title="Write a problem you are facing">
+                                                        <textarea style={{ borderRadius: '5px', width: '300px' }} type='text' required name="report" placeholder="Write your issue...." />
+                                                    </Tooltip>
+
+                                                    <p>
+
+                                                    </p>
+
+                                                </div>
+                                                {/* 
+                            <input type="submit" onClick={handlepswdupdate} style={{ backgroundColor: 'green', color: 'white', width: '300px' }}
+                                value="Update" className="submit" /> */}
+                                                <input type="submit" style={{ backgroundColor: 'green', color: 'white', width: '300px' }}
+                                                    onClick={() => { handlereport(`${post._id}`) }} value="Report" className="submit" />
+
+                                            </form>
+                                        </Box>
+                                    </Modal>
+
+
+                                </Card>
+                            }
+                        </div>
+                    })}
+
+                    {/* </div> */}
+
+                    {/* })} */}
+                </div>
+
+            }).reverse()
+            }
+
+
+            </Box>
