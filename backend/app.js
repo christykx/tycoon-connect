@@ -29,7 +29,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.set('*',path.join(__dirname,'./frontend/build/index.html'))
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Credentials", true);
+  // res.header("Access-Control-Allow-Credentials", true);
+  res.setHeader('Access-Control-Allow-Origin', 'https://main.d1m5dwj4swb035.amplifyapp.com');
+
   next();
 });
 
