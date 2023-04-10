@@ -8,7 +8,7 @@ function verify(req, res, next) {
     console.log(authHeader,"Auth header")
 
 
-    console.log(req.cookies.accessToken, "@@@@@@@@@@@@@@@@@@@@@@@@22");
+    // console.log(req.cookies.accessToken, "@@@@@@@@@@@@@@@@@@@@@@@@22");
     if (authHeader) {
         // const token = authHeader;
         const token = authHeader && authHeader.split(' ')[1];
