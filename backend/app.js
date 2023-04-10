@@ -37,10 +37,8 @@ app.use(
   cors({
     // origin: ["https://localhost:3000", "https://tycoonconnect.onrender.com"],
     // origin: ["http://localhost:3000"],
-    origin: ["https://main.d1m5dwj4swb035.amplifyapp.com"],
-
-   
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    origin: "https://main.d1m5dwj4swb035.amplifyapp.com",
+    methods: ["GET","HEAD","PUT","PATCH","POST","DELETE"],
     credentials: true
   })
 );
