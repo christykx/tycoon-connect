@@ -20,7 +20,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
-app.use(express.json());Z
+app.use(express.json()); Z
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -37,9 +37,10 @@ app.use(
   cors({
     // origin: ["https://localhost:3000", "https://tycoonconnect.onrender.com"],
     // origin: ["http://localhost:3000"],
-    origin: "*",
-    
+    origin: "https://main.d1m5dwj4swb035.amplifyapp.com",
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
     credentials: true
+
   })
 );
 
