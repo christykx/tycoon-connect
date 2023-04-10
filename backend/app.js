@@ -27,12 +27,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use(express.static(path.join(__dirname, 'public', './frontend/build')));
 // app.set('*',path.join(__dirname,'./frontend/build/index.html'))
+// module.exports = app;
+app.listen(3001, () => {
+  console.log("Server Started");
+})
 
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Credentials", true);
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Credentials", true);
   
-//   next();
-// });
+  next();
+});
 
 app.use(
   cors({
@@ -72,10 +76,6 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-// module.exports = app;
-app.listen(3001, () => {
-  console.log("Server Started");
-})
 
 
 // app.listen(3001,()=>{
