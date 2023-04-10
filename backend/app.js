@@ -28,21 +28,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static(path.join(__dirname, 'public', './frontend/build')));
 // app.set('*',path.join(__dirname,'./frontend/build/index.html'))
 
-app.use((req, res, next) => {
-  // res.header("Access-Control-Allow-Credentials", true);
-  res.setHeader('Access-Control-Allow-Origin', 'https://main.d1m5dwj4swb035.amplifyapp.com');
-
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Credentials", true);
+  
+//   next();
+// });
 
 app.use(
   cors({
-    // origin: ["https://localhost:3000", "https://tycoonconnect.onrender.com"],
-    // origin: ["http://localhost:3000"],
     origin: "https://main.d1m5dwj4swb035.amplifyapp.com",
-    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    methods: "GET,PUT,HEAD,PATCH,POST,DELETE",
     credentials: true
-
   })
 );
 
