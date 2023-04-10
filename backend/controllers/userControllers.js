@@ -74,8 +74,10 @@ module.exports = {
         //     res.cookie("accessToken", accessToken,
         //     { withCredentials: true, secure: false, httpOnly: false }).status(200).json({ userid, accessToken, OTP })
         // }
-            res.cookie("accessToken", accessToken,
-              { withCredentials: true, secure: false, httpOnly: false }).status(200).json({ userid, accessToken })
+
+            // res.cookie("accessToken", accessToken,
+            //   { withCredentials: true, secure: false, httpOnly: false })
+              res.status(200).json({ userid, accessToken })
           }
         }).catch((err) => {
           res.status(500).json(err)
@@ -234,7 +236,7 @@ module.exports = {
           // res.cookie("accessToken", accessToken,
           //   { withCredentials: true, httpOnly: true, secure: false })
             res.status(200).json({ userid, accessToken })
-          console.log(req.cookies, 'cookies is here');
+          // console.log(req.cookies, 'cookies is here');
 
         } else {
           console.log("-----error---");
@@ -342,7 +344,7 @@ module.exports = {
     try {
 
       const { userid } = req.body
-      console.log(req.cookies.accessToken, 'hai all');
+      // console.log(req.cookies.accessToken, 'hai all');
 
       console.log(req.params.id, "REQ body contains post id");
       userHelpers.getpostdetails(req.params.id).then((response) => {
@@ -567,7 +569,7 @@ module.exports = {
 
   getUsername: function (req, res) {
     console.log("getuser nameee");
-    console.log(req.cookies, 'cookies is here in get post page');
+    // console.log(req.cookies, 'cookies is here in get post page');
 
     try {
 
@@ -599,12 +601,12 @@ module.exports = {
 
   getUseremail: function (req, res) {
     console.log("emailllllll ");
-    console.log(req.cookies, 'cookies is here in get post page');
+    // console.log(req.cookies, 'cookies is here in get post page');
 
     try {
 
       const { userid } = req.body
-      console.log(req.cookies.accessToken, 'hai all');
+      // console.log(req.cookies.accessToken, 'hai all');
 
       console.log(req.params.id, "REQ body contains user id");
       userHelpers.finduseremail(req.params.id).then((response) => {
