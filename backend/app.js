@@ -40,7 +40,7 @@ app.use((req, res, next) => {
 
 app.use(
   cors({
-    origin: "https://main.d1m5dwj4swb035.amplifyapp.com",
+    origin: ["https://main.d1m5dwj4swb035.amplifyapp.com"],
     methods: "GET,PUT,HEAD,PATCH,POST,DELETE",
     credentials: true
   })
