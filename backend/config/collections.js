@@ -7,7 +7,6 @@ module.exports={
     COMMENT_COLLECTION:'comment',
     NOTIFICATION_COLLECTION:'notification'
 
-
     // FOLLOW_COLLECTION:'follow'
     
 }
