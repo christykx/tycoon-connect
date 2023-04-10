@@ -6,6 +6,7 @@ function verify(req, res, next) {
     // const authHeader = req.cookies.accessToken;
     const authHeader = req.headers['authorization'];
     console.log(authHeader,"Auth header")
+    
 
 
     // console.log(req.cookies.accessToken, "@@@@@@@@@@@@@@@@@@@@@@@@22");

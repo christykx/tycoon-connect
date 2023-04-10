@@ -229,8 +229,11 @@ module.exports = {
             },
             process.env.JWT,
             { expiresIn: "7d" });
-          res.cookie("accessToken", accessToken,
-            { withCredentials: true, httpOnly: true, secure: false }).status(200).json({ userid, accessToken })
+
+          
+          // res.cookie("accessToken", accessToken,
+          //   { withCredentials: true, httpOnly: true, secure: false })
+            res.status(200).json({ userid, accessToken })
           console.log(req.cookies, 'cookies is here');
 
         } else {
