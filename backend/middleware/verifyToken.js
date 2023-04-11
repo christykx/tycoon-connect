@@ -6,6 +6,7 @@ function verify(req, res, next) {
     // const authHeader = req.cookies.accessToken;
     const authHeader = req.headers['authorization'];
     console.log(authHeader,"Auth header")
+
     
 
 
@@ -13,6 +14,7 @@ function verify(req, res, next) {
     if (authHeader) {
         // const token = authHeader;
         const token = authHeader && authHeader.split(' ')[1];
+        alert(token)
 
 
         jwt.verify(token.accessToken, "christy", async (err, user) => {
