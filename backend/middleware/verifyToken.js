@@ -12,9 +12,10 @@ function verify(req, res, next) {
 
     // console.log(req.cookies.accessToken, "@@@@@@@@@@@@@@@@@@@@@@@@22");
     if (authHeader) {
-        // const token = authHeader;
+        const token = authHeader;
+        console.log(token,"Tokenn");
         // const {accessToken} =authHeader
-        const token = authHeader && authHeader.split(' ')[1];
+        // const token = authHeader && authHeader.split(' ')[1];
         
 
 
