@@ -13,12 +13,12 @@ function verify(req, res, next) {
     // console.log(req.cookies.accessToken, "@@@@@@@@@@@@@@@@@@@@@@@@22");
     if (authHeader) {
         // const token = authHeader;
-        const {accessToken} =authHeader
+        // const {accessToken} =authHeader
         const token = authHeader && authHeader.split(' ')[1];
         
 
 
-        jwt.verify(accessToken, "christy", async (err, user) => {
+        jwt.verify(token, "christy", async (err, user) => {
             req.user = user;
             if (err) res.status(403).json("token is not valid!");
 
