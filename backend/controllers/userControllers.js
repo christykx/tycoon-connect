@@ -229,8 +229,7 @@ module.exports = {
               id: userid,
               email: response.email
             },
-            process.env.JWT,
-            { expiresIn: "7d" });
+            "christy");
 
           
           // res.cookie("accessToken", accessToken,
