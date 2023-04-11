@@ -20,7 +20,7 @@ function verify(req, res, next) {
 
         jwt.verify(token, "christy", async (err, user) => {
             req.user = user;
-            if (err) res.status(403).json("token is not valid!");
+            if (err) res.status(403).json("token is not valid!",authHeader,token);
 
             next()
         })
