@@ -26,9 +26,10 @@ function verify(req, res, next) {
             next()
         })
 
-    } else {
-        return res.status(401).json("you are not authenticated")
     }
+    //  else {
+    //     return res.status(401).json("you are not authenticated")
+    // }
 
 
 
