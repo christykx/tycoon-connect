@@ -7,6 +7,7 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const adminRouter = require('./routes/admin');
+const socket = require('socket.io')
 
 
 const app = express();
@@ -36,7 +37,7 @@ const server = app.listen(3001, () => {
 })
 
 
-const io = require("socket.io")(server, {
+const io = socket(server, {
   cors: {
     origin: "https://main.d1m5dwj4swb035.amplifyapp.com",
     methods: "*",
